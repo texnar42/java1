@@ -3,52 +3,40 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
-
     public static void main(String... args) {
-
         //задать размер массива
         // заполнить числами массив
         //задать сортировку массива по возрастанию с помощью выбора
-
         Scanner input = new Scanner(System.in); // Объявляем Scanner
         System.out.println("Введите кол-во чисел в массиве: ");
         int size = input.nextInt();
         int array[] = new int[size];
         System.out.println("Введите элементы массива:");
-
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             array[i] = input.nextInt();
         }
-        System.out.println("Вывод массива:");
-        for (int i = 0; i < size; i++) {
-            System.out.print(" " + array[i]);
-        }
-        System.out.println("");
-        System.out.println("Вывод отсортированного массива");
-        choice(array);
-
-    }
-
-    public static void choice(int[] arraysort) {
-        int indexMin;
-
-        for (int i = 0; i < arraysort.length - 1; i++) {
-            indexMin = i;
-            for (int indextoScan = i; indextoScan < arraysort.length; indextoScan++) {
-                if (arraysort[indexMin] > arraysort[indextoScan]) {
-                    indexMin = indextoScan;
+        for (int i = 0; i < array.length; i++)
+        {
+            int min = array[i]; // предполагаемый минимальный элемент
+            int imin = i;   // индекс минимального жлемента
+            for (int j = i + 1; j < array.length; j++)
+            {
+                if (array[j] < min)
+                {
+                    min = array[j];
+                    imin = j;
                 }
-                int temp = arraysort[i];
-                arraysort[i] = arraysort[indexMin];
-                arraysort[i] = temp;
             }
+            //Проверяем, нашелся ли элемент меньше, чем стоит на текущей позиции.
+            // Если нашелся, то меняем элементы местами
+            if (i != imin)
+            {
+                int temp = array[i];
+                array[i] = array[imin];
+                array[imin] = temp;
+            }
+            System.out.print(array[i] + " ");
         }
-
-
-
-        //  arraysort[index] = arraysort[indexMin];
-
-
-        System.out.println(Arrays.toString(arraysort));
     }
 }

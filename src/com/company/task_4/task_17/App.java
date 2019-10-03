@@ -1,21 +1,21 @@
 package com.company.task_4.task_17;
 
-public class App {
-    public static void main(String[] args) {
-        int[] b = new int[255];
-        int col = 0;
-        System.out.print("Введите 10-чное число: ");
-        int a = new java.util.Scanner(System.in).nextInt();
-        for (int i = a/2; i >= 1; a/=2, i/=2, col++){
-            if (a % i == 0)
-                b[col] = 0;
-            else
-                b[col] = 1;
-            if (i == 1)
-                b[col+1] = 1;
+import java.util.Scanner;
+
+public class App
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите число в двоичной системе: ");
+        String str = scanner.nextLine();
+        int n = 0;
+        for (int i = 0; i < str.length(); i++)
+        {
+            n <<= 1;
+            if (str.charAt(i) == '1') n++;
         }
-        System.out.print("Число в двоичной системе: ");
-        for (int i = col; i > -1; i--)
-            System.out.print(b[i]);
+        System.out.println("\"" + str + "\" -> " + n);
     }
 }
+
